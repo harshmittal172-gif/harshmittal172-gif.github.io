@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divyansh Mittal — Operator who builds the tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15171a; --paper:#faf8f5; --line:#e2ddd4;
+    --accent:#0b5d3b; --accent-soft:#e8f0eb; --muted:#6b6760;
+    --signal:#d6512b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:'Inter',sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+  ::selection{background:var(--accent);color:var(--paper)}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:10;background:rgba(250,248,245,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+  nav .name{font-family:'Fraunces';font-weight:600;font-size:1.05rem}
+  nav .links{display:flex;gap:26px}
+  nav a{color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+  nav a:hover{color:var(--accent)}
+  @media(max-width:600px){nav .links{gap:16px}nav a.hide-sm{display:none}}
+
+  /* ---- hero ---- */
+  .hero{padding:90px 0 70px}
+  .eyebrow{font-family:'JetBrains Mono';font-size:.78rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  .hero h1{font-family:'Fraunces';font-weight:500;font-size:clamp(2.4rem,6vw,4rem);
+    line-height:1.04;letter-spacing:-.02em;margin-bottom:26px}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p.lead{font-size:1.18rem;color:var(--muted);max-width:640px;margin-bottom:34px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;
+    border-radius:2px;font-size:.92rem;font-weight:500;text-decoration:none;
+    transition:transform .15s,box-shadow .15s}
+  .btn-primary{background:var(--accent);color:var(--paper)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(11,93,59,.22)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---- metric strip ---- */
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);margin:10px 0 0}
+  .metric{background:var(--paper);padding:24px 20px}
+  .metric .num{font-family:'Fraunces';font-size:1.9rem;font-weight:600;color:var(--accent)}
+  .metric .lbl{font-size:.82rem;color:var(--muted);margin-top:4px}
+  @media(max-width:680px){.metrics{grid-template-columns:repeat(2,1fr)}}
+
+  /* ---- sections ---- */
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  .sec-label{font-family:'JetBrains Mono';font-size:.76rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:30px;
+    display:flex;align-items:center;gap:12px}
+  .sec-label::before{content:"";width:26px;height:1px;background:var(--signal)}
+  h2{font-family:'Fraunces';font-weight:500;font-size:1.9rem;
+    letter-spacing:-.01em;margin-bottom:18px}
+  .prose{font-size:1.05rem;color:#3a3833;max-width:680px}
+  .prose p{margin-bottom:16px}
+  .prose strong{color:var(--ink);font-weight:600}
+
+  /* ---- project card ---- */
+  .project{border:1px solid var(--line);border-radius:4px;overflow:hidden;
+    background:#fff;transition:box-shadow .2s,transform .2s}
+  .project:hover{box-shadow:0 14px 40px rgba(0,0,0,.07);transform:translateY(-3px)}
+  .project .top{padding:28px 30px 22px;border-bottom:1px solid var(--line)}
+  .project .tag{display:inline-block;font-family:'JetBrains Mono';font-size:.72rem;
+    color:var(--accent);background:var(--accent-soft);padding:4px 10px;border-radius:2px;
+    margin-bottom:14px}
+  .project h3{font-family:'Fraunces';font-size:1.4rem;font-weight:600;margin-bottom:8px}
+  .project .top p{color:var(--muted);font-size:.98rem}
+  .project .stack{display:flex;gap:8px;flex-wrap:wrap;padding:18px 30px;
+    background:#fbfaf8}
+  .chip{font-family:'JetBrains Mono';font-size:.74rem;color:#4a4742;
+    border:1px solid var(--line);padding:4px 10px;border-radius:2px;background:#fff}
+  .project .foot{padding:18px 30px;display:flex;gap:18px}
+  .project .foot a{color:var(--accent);font-size:.9rem;text-decoration:none;font-weight:500}
+  .project .foot a:hover{text-decoration:underline}
+
+  .proj-grid{display:grid;gap:22px}
+
+  /* ---- experience timeline ---- */
+  .xp{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:22px 0;
+    border-bottom:1px solid var(--line)}
+  .xp:last-child{border-bottom:none}
+  .xp .when{font-family:'JetBrains Mono';font-size:.82rem;color:var(--muted);padding-top:3px}
+  .xp h4{font-size:1.05rem;font-weight:600;margin-bottom:5px}
+  .xp .role-co{color:var(--accent);font-size:.92rem;margin-bottom:10px}
+  .xp p{color:#3a3833;font-size:.97rem}
+  @media(max-width:600px){.xp{grid-template-columns:1fr;gap:6px}}
+
+  /* ---- footer ---- */
+  footer{border-top:1px solid var(--line);padding:54px 0 64px;text-align:center}
+  footer h2{margin-bottom:14px}
+  footer p{color:var(--muted);margin-bottom:26px}
+  footer .mono{font-family:'JetBrains Mono';font-size:.8rem;color:var(--muted);margin-top:40px}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="name">Divyansh Mittal</span>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#about" class="hide-sm">About</a>
+    <a href="#experience" class="hide-sm">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Commercial Operations · AI Builder · MBA</div>
+  <h1>I'm the operator who <em>builds the tools</em>, not just runs the numbers.</h1>
+  <p class="lead">I take broken operations and rebuild them into systems that scale — most recently engineering an AI-powered operations platform that took a £1.3M business from notebooks to live intelligence.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#work">See what I've built →</a>
+    <a class="btn btn-ghost" href="#contact">Get in touch</a>
+  </div>
+  <div class="metrics">
+    <div class="metric"><div class="num">12→28%</div><div class="lbl">Conversion driven</div></div>
+    <div class="metric"><div class="num">£1.3M</div><div class="lbl">Operation scaled</div></div>
+    <div class="metric"><div class="num">60→95%</div><div class="lbl">Adoption achieved</div></div>
+    <div class="metric"><div class="num">~0</div><div class="lbl">Staff turnover, from 4/yr</div></div>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap">
+  <div class="sec-label">About</div>
+  <div class="prose">
+    <p>I started at Cochani London on £70 a day and ended up running five sites — because I couldn't leave a broken process alone. The reporting nobody trusted, stock called on gut feel: nobody asked me to fix it, so I <strong>built an operations platform from scratch</strong>, including Python and LLM-powered automation, to give the business a clear view of itself.</p>
+    <p>What makes me different from most commercial operators is that <strong>I build the technology myself</strong>. I can sit with a technical founder and a non-technical stakeholder in the same meeting and translate between them — because I've had to be both. Now completing an MBA at Brunel (on scholarship, distinction so far), I'm focused on roles where operational rigour and a builder's mindset compound into real impact.</p>
+  </div>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <div class="sec-label">Selected Work</div>
+  <h2>Things I've built</h2>
+  <div class="proj-grid" style="margin-top:34px">
+
+    <div class="project">
+      <div class="top">
+        <span class="tag">AI · PYTHON · LLM</span>
+        <h3>Cochani OS Mini</h3>
+        <p>An AI operations assistant: upload messy sales/inventory data and get instant, LLM-generated insights on a live dashboard. A shareable demo of the system I built at Cochani — proving I can go from a raw API to a working tool that drives a decision.</p>
+      </div>
+      <div class="stack">
+        <span class="chip">Python</span><span class="chip">Claude API</span>
+        <span class="chip">Streamlit</span><span class="chip">pandas</span>
+      </div>
+      <div class="foot">
+        <a href="https://github.com/harshmittal172-gif/Cochani-Os-Mini" target="_blank">View on GitHub ↗</a>
+        <a href="https://github.com/harshmittal172-gif/Cochani-Os-Mini" target="_blank">View code ↗</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="top">
+        <span class="tag">PRICING · GTM STRATEGY</span>
+        <h3>Axial 3D — Capacity Planning Engine</h3>
+        <p>A 70+ formula pricing decision engine with a 7-factor deal scorecard, built to standardise B2B quoting across two product lines. Identified two underserved segments (NHS surgical units, med-device R&D) and shaped a segment-specific go-to-market strategy.</p>
+      </div>
+      <div class="stack">
+        <span class="chip">Excel</span><span class="chip">Financial Modelling</span>
+        <span class="chip">Market Research</span>
+      </div>
+      <div class="foot">
+        <a href="#contact">Ask me about it →</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="top">
+        <span class="tag">PRODUCT · GROWTH</span>
+        <h3>Transportify — Growth Strategy</h3>
+        <p>Designed an AI booking assistant and loyalty programme to reduce churn for a B2B logistics platform, plus a Quote Fairness Calculator that improved pricing transparency and close rate at the point of quote.</p>
+      </div>
+      <div class="stack">
+        <span class="chip">Product Strategy</span><span class="chip">AI Concepts</span>
+        <span class="chip">Retention</span>
+      </div>
+      <div class="foot">
+        <a href="#contact">Ask me about it →</a>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <div class="sec-label">Experience</div>
+  <h2>Where I've operated</h2>
+  <div style="margin-top:30px">
+    <div class="xp">
+      <div class="when">2023 — Now</div>
+      <div>
+        <h4>Regional Sales & Operations Manager</h4>
+        <div class="role-co">Cochani London</div>
+        <p>Engineered Cochani OS from scratch. Drove conversion 12%→28%, scaled a £1.3M operation, led 25 people, and took staff turnover from 4/year to near zero.</p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="when">2020 — 2022</div>
+      <div>
+        <h4>Sales & Marketing Manager</h4>
+        <div class="role-co">Regal Agencies, Delhi</div>
+        <p>Built commercial infrastructure across 100+ B2B accounts, lifting conversion 20–25%. Directed cross-functional alignment across 40 people to resolve a fulfilment crisis and hit 120% of revenue target.</p>
+      </div>
+    </div>
+    <div class="xp">
+      <div class="when">2025 — 2026</div>
+      <div>
+        <h4>MBA Candidate — Scholarship, Distinction</h4>
+        <div class="role-co">Brunel University London</div>
+        <p>Consulting projects in B2B SaaS growth strategy and medical-tech pricing. Distinction across results so far.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="sec-label" style="justify-content:center">Contact</div>
+  <h2>Hand me a problem that matters.</h2>
+  <p>I'll give it everything I have until it works.</p>
+  <div class="cta-row" style="justify-content:center">
+    <a class="btn btn-primary" href="mailto:harshmittal172@gmail.com">harshmittal172@gmail.com</a>
+    <a class="btn btn-ghost" href="https://linkedin.com/in/divyansh-mittal" target="_blank">LinkedIn ↗</a>
+  </div>
+  <div class="mono">Built from scratch · Divyansh Mittal · 2026</div>
+</div></footer>
+
+</body>
+</html>
