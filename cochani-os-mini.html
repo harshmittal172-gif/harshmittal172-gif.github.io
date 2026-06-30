@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Cochani OS Mini — Case Study · Divyansh Mittal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="rail">
+  <div class="mark"><a href="index.html">DIVYANSH&nbsp;&nbsp;MITTAL</a></div>
+  <nav class="nav">
+    <a href="index.html">Index</a>
+    <a href="cochani-os.html" class="is-current">Work</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="meta">Case № 02 — Cochani OS Mini</div>
+</header>
+
+<main class="page">
+  <section class="opening">
+    <div class="col">
+      <div class="eyebrow">Case Study № 02</div>
+      <h1 class="h1">An AI operations assistant, <em>in one Python file</em>.</h1>
+      <p class="lede">
+        A working, shareable proof that the operator can also build. Upload messy
+        sales data, get LLM-generated insights on a live local dashboard. Roughly
+        a hundred lines of code, written between shifts.
+      </p>
+    </div>
+  </section>
+
+  <div class="case">
+
+    <div class="case-meta">
+      <div class="item"><div class="label">Role</div><div class="val">Sole engineer · personal project</div></div>
+      <div class="item"><div class="label">Built</div><div class="val">June 2026 — Two days</div></div>
+      <div class="item"><div class="label">Stack</div><div class="val">Python · Anthropic Claude API · Streamlit · pandas</div></div>
+    </div>
+
+    <section class="chapter">
+      <div class="marg"><span class="step">The problem</span>Proof, not claim</div>
+      <div class="body">
+        <h3>Most commercial people can't show their technical work. I wanted to.</h3>
+        <p>
+          The reframing was simple: rather than describe the AI tool I'd built at Cochani,
+          ship a small public version of the idea — one that anyone reviewing my profile
+          could clone, run, and inspect. Code on the table, no pitch deck required.
+        </p>
+      </div>
+      <aside class="aside">i / iii</aside>
+    </section>
+
+    <section class="chapter">
+      <div class="marg"><span class="step">The build</span>End-to-end in two evenings</div>
+      <div class="body">
+        <h3>From a raw API to a working tool on localhost.</h3>
+        <p>
+          The application accepts a CSV upload, summarises the dataset, and submits a
+          structured prompt to Anthropic's Claude API. The response — three specific,
+          commercially-useful actions — renders on a Streamlit dashboard at localhost:8501.
+          The architecture is deliberately small: the point was to walk the full path
+          from API key to working interface, not to over-engineer.
+        </p>
+        <p>
+          What I learned by doing it: prompt design as a commercial skill, environment
+          variables for key handling, and the discipline of building something a non-technical
+          end-user could actually pick up and use.
+        </p>
+      </div>
+      <aside class="aside">ii / iii</aside>
+    </section>
+
+    <section class="chapter">
+      <div class="marg"><span class="step">The artefact</span>Public, runnable</div>
+      <div class="body">
+        <h3>Live on GitHub. Cloneable. Inspectable.</h3>
+        <p>
+          The repository ships with sample retail data, a README that explains the
+          architecture, and a single command to run. The bar I set was: a recruiter or
+          engineer should be able to clone it, see what it does, and read the code in
+          ten minutes. <a href="https://github.com/harshmittal172-gif/Cochani-Os-Mini" target="_blank" rel="noopener" style="color: var(--forest); border-bottom: 1px solid var(--forest);">View on GitHub →</a>
+        </p>
+      </div>
+      <aside class="aside">iii / iii</aside>
+    </section>
+
+  </div>
+
+  <nav class="continuum">
+    <a href="cochani-os.html"><div class="lab">← № 01</div><div class="nm">Cochani OS</div></a>
+    <a href="regal.html" class="end"><div class="lab">№ 03 →</div><div class="nm">The Q3 Alignment</div></a>
+  </nav>
+
+  <section class="contact-block">
+    <p class="ask">Hand me a problem that <em>matters</em>.<br>I'll give it everything I have until it works.</p>
+    <div class="links">
+      <a href="mailto:harshmittal172@gmail.com">harshmittal172@gmail.com</a>
+      <a href="https://linkedin.com/in/divyansh-mittal" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/harshmittal172-gif" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div>© Divyansh Mittal · 2026</div>
+    <div class="mid">London · Brunel MBA</div>
+    <div class="end">Set in Newsreader & JetBrains Mono</div>
+  </footer>
+</main>
+</body>
+</html>
